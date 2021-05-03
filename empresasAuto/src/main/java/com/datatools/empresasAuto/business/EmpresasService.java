@@ -19,7 +19,11 @@ public class EmpresasService implements IEmpresasService {
 	public ResponseGenericDTO crearEmpresa(EmpresaDto empresaDto) {		
 		String nombre = empresaDto.getEmpresa().getNombre();
 		try {
-			File file = new File("empresasPrueba\\" + nombre + ".dat");
+			File carpeta = new File("empresasPrueba");
+			if(!carpeta.exists()) {
+				carpeta.mkdir();
+			}
+			File file = new File(carpeta+"\\" + nombre + ".dat");
 			if (file.exists()) {
 				return new ResponseGenericDTO(null, false, "Ya existe una empresa con ese nombre",
 						HttpStatus.BAD_REQUEST);
@@ -42,6 +46,9 @@ public class EmpresasService implements IEmpresasService {
 		EmpresaDto empresas;
 		try {			
 			File carpeta = new File("empresasPrueba");
+			if(!carpeta.exists()) {
+				return new ResponseGenericDTO(null, false, "No existen registros", HttpStatus.BAD_REQUEST);
+			}
 			String[] listaEmpresas = carpeta.list();
 			for (String empresaNombre : listaEmpresas) {
 				ObjectInputStream leyendoFichero = new ObjectInputStream(
