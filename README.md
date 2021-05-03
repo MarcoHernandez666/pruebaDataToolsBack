@@ -21,6 +21,9 @@ _Descargar el proyecto de este repositorio git.
 
 _Abrir el proyecto en el framewrok de springBoot
 
+![image](https://user-images.githubusercontent.com/83394759/116905605-d34fc880-ac04-11eb-8542-840045fbb04c.png)
+
+
 
 ## Despliegue 📦
 
